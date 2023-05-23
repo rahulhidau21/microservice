@@ -1,4 +1,4 @@
-package com.rahul.auth.exception;
+package com.rahul.commons.exception;
 
 import org.springframework.http.HttpStatus;
 

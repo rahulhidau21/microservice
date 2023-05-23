@@ -1,4 +1,4 @@
-package com.rahul.auth.dto;
+package com.rahul.commons.dto;
 
 public class ResponseMessage {
     private Integer status;

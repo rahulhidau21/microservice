@@ -1,4 +1,4 @@
-package com.rahul.auth.dto;
+package com.rahul.commons.dto;
 
 import lombok.Data;
 

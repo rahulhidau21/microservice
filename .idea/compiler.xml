@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="auth-api" />
+        <module name="commons" />
       </profile>
     </annotationProcessing>
   </component>

@@ -1,9 +1,9 @@
-package com.rahul.auth.exception.handler;
+package com.rahul.commons.exception.handler;
 
-import com.rahul.auth.dto.ResponseMessage;
-import com.rahul.auth.exception.BadRequestException;
-import com.rahul.auth.exception.GenricException;
-import com.rahul.auth.exception.UserRequestException;
+import com.rahul.commons.dto.ResponseMessage;
+import com.rahul.commons.exception.BadRequestException;
+import com.rahul.commons.exception.GenricException;
+import com.rahul.commons.exception.UserRequestException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;

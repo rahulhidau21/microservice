@@ -1,10 +1,10 @@
 package com.rahul.auth.controller;
 
-import com.rahul.auth.dto.LoginVM;
-import com.rahul.auth.dto.ResponseMessage;
 import com.rahul.auth.model.User;
 import com.rahul.auth.security.JwtTokenUtil;
 import com.rahul.auth.service.IUserService;
+import com.rahul.commons.dto.LoginVM;
+import com.rahul.commons.dto.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
