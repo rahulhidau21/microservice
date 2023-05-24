@@ -1,8 +1,8 @@
-package com.rahul.security.config;
+package com.rahul.user.config;
 
 import com.rahul.commons.security.CustomePasswordEncoder;
-import com.rahul.security.security.DomainUserDetailsService;
-import com.rahul.security.security.JwtTokenFilter;
+import com.rahul.user.security.DomainUserDetailsService;
+import com.rahul.user.security.JwtTokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -58,8 +58,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 // Set permissions on endpoints
                 .authorizeRequests()
-                // Our public endpoints
-                .antMatchers("/api/v1/authenticate").permitAll()
                 // Our private endpoints
                 .anyRequest().authenticated()
                 .and()

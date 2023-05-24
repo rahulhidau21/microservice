@@ -1,4 +1,4 @@
-package com.rahul.security.security;
+package com.rahul.commons.security;
 
 import org.springframework.security.crypto.codec.Utf8;
 import org.springframework.security.crypto.password.PasswordEncoder;

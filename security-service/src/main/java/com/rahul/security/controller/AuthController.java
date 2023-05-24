@@ -50,8 +50,8 @@ public class AuthController {
                 httpHeaders, HttpStatus.OK);
     }
 
-    @PostMapping("/test")
-    public void test(@RequestBody LoginVM loginVM) {
-        System.out.print("test");
+    @PostMapping("/ping")
+    public String ping() {
+        return "pong";
     }
 }

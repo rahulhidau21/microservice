@@ -9,9 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="commons" />
         <module name="security-service" />
+        <module name="user-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="auth-api" target="11" />
       <module name="doamin" target="11" />
     </bytecodeTargetLevel>
   </component>
