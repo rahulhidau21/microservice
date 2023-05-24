@@ -12,6 +12,7 @@
         <module>security-service</module>
         <module>commons</module>
         <module>user-service</module>
+        <module>eureka-server</module>
     </modules>
 
     <properties>
