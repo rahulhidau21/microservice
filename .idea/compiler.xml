@@ -11,5 +11,8 @@
         <module name="security-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="doamin" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
