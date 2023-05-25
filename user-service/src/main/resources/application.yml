@@ -17,6 +17,11 @@ spring:
       dialect: com.x.data.core.hibernate.dialect.ExtendedH2Dialect
       format_sql: true
     show-sql: true
+  rabbitmq:
+    host: localhost
+    port: 32769
+    username: guest
+    password: guest
 eureka:
   client:
     service-url:
@@ -25,3 +30,12 @@ eureka:
 jwt:
   secret: javainuse
   jwtExpirationInMs: 18000000
+
+rabbitmq:
+  exchanges:
+    internal: internal.exchange
+  queues:
+    notification: notification.queue
+  routing-keys:
+    internal-notification: internal.notification.routing-key
+
