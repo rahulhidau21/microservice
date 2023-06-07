@@ -9,7 +9,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@Import({GlobalExceptionHandler.class, RabbitSSLConfiguration.class, RabbitMQMessageProducer.class})
+@Import({GlobalExceptionHandler.class,
+        RabbitSSLConfiguration.class, RabbitMQMessageProducer.class
+})
 @EnableEurekaClient
 public class UserServiceApplication {
     public static void main(String[] args) {
