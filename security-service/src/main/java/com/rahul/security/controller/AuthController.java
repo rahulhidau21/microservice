@@ -5,7 +5,7 @@ import com.rahul.commons.dto.ResponseMessage;
 import com.rahul.security.model.User;
 import com.rahul.security.security.JwtTokenUtil;
 import com.rahul.security.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,15 +22,13 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 @RestController
 @RequestMapping("/api/v1/")
+@AllArgsConstructor
 public class AuthController {
-    @Autowired
-    private IUserService userService;
+    private final IUserService userService;
 
-    @Autowired
-    private JwtTokenUtil tokenUtil;
+    private final JwtTokenUtil tokenUtil;
 
-    @Autowired
-    private AuthenticationManager authenticationManagerBuilder;
+    private final AuthenticationManager authenticationManagerBuilder;
 
     @PostMapping("/authenticate")
     public ResponseEntity<ResponseMessage> login(@RequestBody LoginVM loginVM) {

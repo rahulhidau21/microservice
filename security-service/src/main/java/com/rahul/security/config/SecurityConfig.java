@@ -1,17 +1,16 @@
 package com.rahul.security.config;
 
 import com.rahul.commons.security.CustomePasswordEncoder;
-import com.rahul.security.security.DomainUserDetailsService;
 import com.rahul.security.security.JwtTokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -19,32 +18,28 @@ import org.springframework.web.filter.CorsFilter;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+public class SecurityConfig {
 
     private final JwtTokenFilter jwtTokenFilter;
 
-
-    private final DomainUserDetailsService domainUserDetailsService;
-
     public SecurityConfig(
-            JwtTokenFilter jwtTokenFilter, DomainUserDetailsService domainUserDetailsService) {
+            JwtTokenFilter jwtTokenFilter) {
         this.jwtTokenFilter = jwtTokenFilter;
-        this.domainUserDetailsService = domainUserDetailsService;
-    }
-
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(domainUserDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
+    public PasswordEncoder passwordEncoder() {
+        return new CustomePasswordEncoder();
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+        return authConfig.getAuthenticationManager();
+    }
+
+    @Bean
+    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         // Enable CORS and disable CSRF
         http.cors().and().csrf().disable()
                 // Add JWT token filter
@@ -65,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic()
         ;
+        return http.build();
     }
 
     // Used by Spring Security if CORS is enabled.
@@ -81,8 +77,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new CorsFilter(source);
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new CustomePasswordEncoder();
-    }
 }
